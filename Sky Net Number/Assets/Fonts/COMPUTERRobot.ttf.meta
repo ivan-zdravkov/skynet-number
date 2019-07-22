@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 277535e58f45c5b4b917191cf4ef9b33
+guid: 2ebfd0556f050194db7ff888cbbc674c
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Old computer St
+  fontName: COMPUTER Robot
   fontNames:
-  - Old computer St
+  - COMPUTER Robot
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
