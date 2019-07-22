@@ -6,38 +6,46 @@ using UnityEngine.UI;
 
 public class Gameplay : MonoBehaviour
 {
+    int originalMin;
+    int originalMax;
+
     [SerializeField] int min;
     [SerializeField] int max;
     [SerializeField] Text guessText;
-    [SerializeField] bool numberFound;
-
-    IList<int> alreadyGuessed;
 
     private int guess;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.numberFound = false;
-        this.alreadyGuessed = new List<int>();
+        this.originalMin = min;
+        this.originalMax = max;
 
         this.NewGuess();
-
-        this.max++;
     }
 
     public void OnPressHigher()
     {
-        this.min = this.guess;
+        if (this.guess == this.originalMax || this.min >= this.max)
+            this.DisableButtons();
+        else
+        {
+            this.min = this.guess + 1;
 
-        this.NewGuess();
+            this.NewGuess();
+        }
     }
 
     public void OnPressLower()
     {
-        this.max = this.guess;
+        if (this.guess == this.originalMin || this.min >= this.max)
+            this.DisableButtons();
+        else
+        {
+            this.max = this.guess - 1;
 
-        this.NewGuess();
+            this.NewGuess();
+        }
     }
 
     public void OnQuit()
@@ -47,32 +55,14 @@ public class Gameplay : MonoBehaviour
 
     private void NewGuess()
     {
-        if (this.numberFound)
-            return;
-
-        this.guess = Random.Range(this.min, this.max);
-
-        if (this.alreadyGuessed.Contains(this.guess))
-        {
-            if (this.alreadyGuessed.Count(x => x == this.guess) > 1)
-            {
-                this.numberFound = true;
-
-                GameObject.Find("Higher Button").GetComponent<Button>().interactable = false;
-                GameObject.Find("Lower Button").GetComponent<Button>().interactable = false;
-            }
-            else
-            {
-                this.alreadyGuessed.Add(this.guess);
-
-                this.NewGuess();
-            }
-        }
-        else
-        {
-            this.alreadyGuessed.Add(this.guess);
-        }
+        this.guess = Random.Range(this.min, this.max + 1);
 
         this.guessText.text = this.guess.ToString();
+    }
+
+    private void DisableButtons()
+    {
+        GameObject.Find("Higher Button").GetComponent<Button>().interactable = false;
+        GameObject.Find("Lower Button").GetComponent<Button>().interactable = false;
     }
 }
