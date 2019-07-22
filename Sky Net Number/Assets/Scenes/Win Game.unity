@@ -300,7 +300,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 'THANKS TO YOUR HELP,
 
-    THE MACHINES NOT RULE THE WORLD.'
+    THE MACHINES NOW RULE THE WORLD.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ef3e02edffa7c64da649554c3ed5358, type: 2}
   m_sharedMaterial: {fileID: 1134941360973936194, guid: 6ef3e02edffa7c64da649554c3ed5358,
